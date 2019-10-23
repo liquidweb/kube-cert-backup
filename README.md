@@ -23,7 +23,7 @@ You can find more information on this library at [PyYaml](https://pyyaml.org/wik
 
 ## Usage
 
-For backing up cert objects you need to give two parameters: namespace and the key word backup.
+For backing up cert objects you need to give 3 parameters: namespace, k8 config path, and the key word backup.
 
 ```bash
 python backup.py <namespace> backup <k8_config_path>
@@ -33,8 +33,9 @@ example
 sudo python backup.py liquid-web-cert-manager-staging backup /Users/myusername/.kube/config-dev
 ```
 
-For restoring the cert object after a back up you need to give two parameters: namespace and the key word restore.
-<b>Note: The restore call will grab the certificate objects from the latest back up if more than one exists.</b>
+For restoring the cert object after a back up you need to give 3 parameters: namespace, k8 config path, and the key word restore.
+<b>Note: If you have multiple backup files there is no guarantee it will restore from latest. Only one backup file should be kept
+ in back up path.</b>
 
 ```bash
 python backup.py <namespace> restore <k8_config_path>
